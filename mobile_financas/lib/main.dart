@@ -1,6 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:mobile_financas/home_screen.dart';
+import 'package:mobile_financas/FourthScreen.dart';
+import 'package:mobile_financas/SecondScreen.dart';
+import 'package:mobile_financas/ThirdScreen.dart';
 import 'login_screen.dart';
-//import 'home_screen.dart';
 
 void main() {
   runApp(const MyApp());
@@ -17,7 +20,14 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      home: TelaLogin(),
+      initialRoute: '/login',
+      routes: {
+        '/login': (context) => const TelaLogin(),
+        '/home_screen': (context) => const TelaInicial(), //Rota Inicial
+        '/second': (context) => const SecondScreen(),
+        '/third': (context) => const ThirdScreen(),
+        '/fourth': (context) => const FourthScreen(),
+      },
     );
   }
 }

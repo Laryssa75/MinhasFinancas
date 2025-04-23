@@ -1,7 +1,8 @@
 import 'package:flutter/material.dart';
-//import 'home_screen.dart';
 
 class TelaLogin extends StatefulWidget {
+  const TelaLogin({super.key});
+
   @override
   _TelaLoginState createState() => _TelaLoginState();
 }
@@ -62,11 +63,11 @@ class _TelaLoginState extends State<TelaLogin> {
                   if (_formKey.currentState!.validate()) {
                     if (_usuarioController.text == usuarioCorreto &&
                         _senhaController.text == senhaCorreta) {
-                      Navigator.pushReplacement(
-                        context,
-                        MaterialPageRoute(
-                          builder: (context) => TelaInicial(),
-                        ),
+                      Navigator.pushReplacementNamed(context, '/home_screen');
+                    } else {
+                      ScaffoldMessenger.of(context).showSnackBar(
+                        const SnackBar(
+                            content: Text('Usuário  ou senha incorretos')),
                       );
                     }
                   }
@@ -76,20 +77,6 @@ class _TelaLoginState extends State<TelaLogin> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class TelaInicial extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text('Tela Inicial'),
-      ),
-      body: const Center(
-        child: Text('Bem-vindo!'),
       ),
     );
   }
